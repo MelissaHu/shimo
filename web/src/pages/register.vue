@@ -1,8 +1,9 @@
+
 <template>
     <div>
         <h3>注册页面</h3>
         <div>
-          <div>输入手机号：<input type="text" v-model="registerForm.telNo"  @input="getTelPhone"></div>
+          <div>输入手机号：<input type="text" v-model="registerForm.telNo" oninput = "value=value.replace(/[^\d]/g,'')" maxlength="11" @input="getTelPhone"></div>
           <div>输入验证码：<input type="password" v-model="registerForm.authCode"><button>获取验证码</button></div>
           <button @click.stop.prevent="submit">登录</button>
         </div>
