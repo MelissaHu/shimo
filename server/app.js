@@ -19,12 +19,12 @@ app.post('/toLogin',bodyParser.json(),(req,res)=>{
     res.jsonp({'login':'123'})
 })
 app.post('/toRegister',bodyParser.json(),(req,res)=>{
-	console.log('req',req.body)
 	let params = {
-		telNo:req.body.telNo
+		phoneNo:req.body.phoneNo,
+		password:req.body.password
 	}
 
-  userInfo.find({name: params.telNo}, function(err, doc){//doc查到的数据
+  userInfo.find({phoneNo: params.phoneNo}, function(err, doc){//doc查到的数据
 		if(err){return};
 		if(doc.length){
 			res.json({
@@ -34,7 +34,8 @@ app.post('/toRegister',bodyParser.json(),(req,res)=>{
 		}else{
 			//操作数据库，存储数据
 			let user = new userInfo({//实例化mongo数据库文档的model
-				telNo: params.telNo
+				phoneNo: params.phoneNo,
+				password:req.body.password
 			});
 			user.save(function(err, doc){//第一个参数为错误对象，第二个为当前存储的对象
 				if(err){return};
