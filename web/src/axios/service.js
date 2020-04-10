@@ -27,11 +27,10 @@ axios.interceptors.response.use(
 )
 
 export async function toLogin(params) {
-    console.log(params)
-    await axios.post(`${API_HOST}/toLogin`, params, { headers: { 'Content-Type': 'application/json' } })
+   const data= await axios.post(`${API_HOST}/toLogin`, params, { headers: { 'Content-Type': 'application/json' } })
+   return data.data;
 }
 export async function toRegister(params) {
-    console.log(params)
     await axios.post(`${API_HOST}/toRegister`, params, { headers: { 'Content-Type': 'application/json' } })
 }
 

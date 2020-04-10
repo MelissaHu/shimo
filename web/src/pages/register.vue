@@ -7,6 +7,7 @@
           <div>输入验证码：<input type="text" disabled=true v-model="registerForm.authCode" maxlength="4"><button>获取验证码</button></div>
           <div>设置密码：<input type="password" v-model="registerForm.password"></div>
           <button @click.stop.prevent="submit">提交</button>
+           <router-link to="/login">去登录</router-link>
         </div>
     </div>
 </template>
@@ -28,16 +29,16 @@ export default {
        getTelPhone(){
           let val = this.registerForm.phoneNo;
           if(val.replace(/[^\d]/g,'')){
-              console.log('不是数字')
+             // console.log('不是数字')
           }else{
-              console.log('是数字')
+             // console.log('是数字')
           }
        },
         submit(){
             if(this.registerForm.phoneNo === '' || this.registerForm.password === ''){
-                   console.log('账号或者密码不能为空')
+                  // console.log('账号或者密码不能为空')
             }else if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.registerForm.phoneNo))){
-                   console.log('手机号码有误嗯，请重新填写');
+                  // console.log('手机号码有误嗯，请重新填写');
             }else{
                  this.toRegister(this.registerForm)
             }
